@@ -10,6 +10,8 @@ if [ ! -d "../bobine" ]; then
     cd bobine
     echo "📦 Installing server dependencies..."
     npm install
+    echo "📂 Creating scripts directory..."
+    mkdir -p scripts
     cd ../pokemon-battle
 else
     echo "✅ Bobine Server already exists."
@@ -26,6 +28,7 @@ if [ ! -f ".env" ]; then
     echo "ED25519_PRIVATE_KEY_HEX=$PRIVATE_KEY" > .env
     echo "ED25519_PUBLIC_KEY_HEX=$PUBLIC_KEY" >> .env
     echo "DATABASE_PATH=./db.sqlite" >> .env
+    echo "SCRIPTS_PATH=./scripts" >> .env
     
     echo "SERVER=http://localhost:8080" > .env.local
     
