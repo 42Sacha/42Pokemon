@@ -17,31 +17,55 @@ He suspects you of using AI to code your exam. To prove your worth and regain ac
 
 ## ⚡ Quick Start
 
-1.  **Run the Setup Script** (installs everything, invokes Bobine, generates keys):
+1.  **Run the Setup Script** (The easiest way):
     ```bash
+    cd pokemon-battle
     ./setup.sh
     ```
 
-2.  **Compile the Game**:
+    *This script will:*
+    *   Clone the server if missing.
+    *   **Run `npm install` in both folders.**
+    *   Generate your keys.
+
+---
+
+## 🛠️ Manual Installation (If setup.sh fails)
+
+If you prefer doing it manually, you must install dependencies in **BOTH** folders:
+
+1.  **Install Client Dependencies**:
     ```bash
+    cd pokemon-battle
+    npm install
     npm run prepack:asc
     ```
 
-3.  **Start the Server** (Open a **NEW Terminal** window):
+2.  **Install Server Dependencies**:
     ```bash
     cd ../bobine
+    npm install
+    ```
+
+---
+
+## 🎮 How to Play
+
+1.  **Start the Server** (Terminal 1):
+    ```bash
+    cd bobine
     ~/.deno/bin/deno run -A --sloppy-imports ./src/mod.ts serve --env=../pokemon-battle/.env --port=8080
     ```
 
-4.  **Deploy**:
+2.  **Deploy the Game** (Terminal 2):
     ```bash
-    # Back in your first terminal
+    cd pokemon-battle
     ~/.deno/bin/deno run -A ./run/src/mods/produce/mod.ts ./out/mod.wasm
     ```
 
-5.  **FIGHT!**:
+3.  **FIGHT!** (Terminal 2):
     ```bash
-    ~/.deno/bin/deno run -A client/game.ts <YOUR_ADDRESS_FROM_STEP_4>
+    ~/.deno/bin/deno run -A client/game.ts <YOUR_ADDRESS_FROM_STEP_2>
     ```
 
 ---

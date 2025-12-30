@@ -8,11 +8,8 @@ if [ ! -d "../bobine" ]; then
     cd ..
     git clone https://github.com/hazae41/bobine
     cd bobine
-    if command -v deno &> /dev/null; then
-        deno install
-    else
-        echo "⚠️ Deno is required but not installed. Please install Deno first."
-    fi
+    echo "📦 Installing server dependencies..."
+    npm install
     cd ../pokemon-battle
 else
     echo "✅ Bobine Server already exists."
@@ -28,6 +25,7 @@ if [ ! -f ".env" ]; then
     
     echo "ED25519_PRIVATE_KEY_HEX=$PRIVATE_KEY" > .env
     echo "ED25519_PUBLIC_KEY_HEX=$PUBLIC_KEY" >> .env
+    echo "DATABASE_PATH=./db.sqlite" >> .env
     
     echo "SERVER=http://localhost:8080" > .env.local
     
