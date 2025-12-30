@@ -8,24 +8,41 @@ He suspects you of using AI to code your exam. To prove your worth and regain ac
 
 ---
 
-## 🚀 Prerequisite (What you need)
+## 🚀 Prerequisite
 
-Before starting, make sure you have these installed on your computer:
-
-1.  **Node.js** (for the package manager)
-2.  **Deno** (to run the simulation) -> [Install Deno](https://deno.land/#installation)
+1.  **Node.js** (for npm)
+2.  **Deno** (for the server and client) -> [Install Deno](https://deno.land/#installation)
 
 ---
 
-## 🛠️ Step 1: Installation
+## ⚡ Quick Start
 
-Open your terminal in this folder (`pokemon-battle`) and run:
+1.  **Run the Setup Script** (installs everything, invokes Bobine, generates keys):
+    ```bash
+    ./setup.sh
+    ```
 
-```bash
-npm install
-```
+2.  **Compile the Game**:
+    ```bash
+    npm run prepack:asc
+    ```
 
-This will download all the necessary tools to build the game.
+3.  **Start the Server** (Open a **NEW Terminal** window):
+    ```bash
+    cd ../bobine
+    ~/.deno/bin/deno run -A --sloppy-imports ./src/mod.ts serve --env=../pokemon-battle/.env --port=8080
+    ```
+
+4.  **Deploy**:
+    ```bash
+    # Back in your first terminal
+    ~/.deno/bin/deno run -A ./run/src/mods/produce/mod.ts ./out/mod.wasm
+    ```
+
+5.  **FIGHT!**:
+    ```bash
+    ~/.deno/bin/deno run -A client/game.ts <YOUR_ADDRESS_FROM_STEP_4>
+    ```
 
 ---
 
